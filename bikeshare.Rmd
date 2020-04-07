@@ -42,6 +42,11 @@ pCommonMonth <- ggplot(commonMonth, aes(x = month, y = ny_freq, group = 1, color
                     x = "Month",
                     y = "Freq",
                     caption = "Bikeshare popular times of travel - the most common month in New York")
+
+## Summary of question 1
+summary(commonMonth)
+commonMonth
+pCommonMonth
 ```
 
 ```{r}
@@ -65,6 +70,11 @@ pWash <- ggplot(subset(dfWash, Freq > 800), aes(x = Station, y = Freq)) +
             x = "Station",
             y = "Freq",
             caption="Bikeshare popular stations - the most common start station in Washington")
+
+## Summary of question 2
+summary(dfWash, 10)
+head(dfWash, 10)
+pWash
 ```
 
 ```{r}
@@ -87,5 +97,12 @@ pAvg <- ggplot(dfAvg, aes(x = city, y = avg_trip, fill = city)) +
                  x = "City",
                  y = "Avg Trip Duration",
                  caption="Bikeshare trip duration - average trip duration in different cities")
+
+## Summary of question 3
+summary(chi$Trip.Duration)
+summary(ny$Trip.Duration)
+summary(wash$Trip.Duration)
+dfAvg
+pAvg
 ```
 
