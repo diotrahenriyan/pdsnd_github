@@ -86,7 +86,7 @@ AvgChi <- mean(chi$Trip.Duration, na.rm = TRUE)
 AvgNy <- mean(ny$Trip.Duration, na.rm = TRUE)
 AvgWash <- mean(wash$Trip.Duration, na.rm = TRUE)
 
-dfAvg <- data.frame(city = c("Chicago", "New York", "Washington"),
+dfAvg <- data.frame(city = c("Chicago", "New York City", "Washington"),
                     avg_trip = c(AvgChi, AvgNy, AvgWash))
 
 # Plotting average graph
