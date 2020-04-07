@@ -73,7 +73,7 @@ pWash <- ggplot(subset(dfWash, Freq > 800), aes(x = Station, y = Freq)) +
 
 ## Summary of question 2
 summary(dfWash, 10)
-head(dfWash, 10)
+head(dfWash, 5)
 pWash
 ```
 
