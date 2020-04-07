@@ -40,7 +40,7 @@ pCommonMonth <- ggplot(commonMonth, aes(x = month, y = ny_freq, group = 1, color
                     labs(title = "The Most Common Month",
                     subtitle = "In New York",
                     x = "Month",
-                    y = "Freq",
+                    y = "Count",
                     caption = "Bikeshare popular times of travel - the most common month in New York")
 
 ## Summary of question 1
