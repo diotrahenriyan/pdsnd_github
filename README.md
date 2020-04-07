@@ -1,15 +1,19 @@
 ### Date created
-Include the date you created this project and README file.
+April 7, 2020
 
 ### Project Title
-Replace the Project Title
+Explore Bike Share Data with R
 
 ### Description
-Describe what your project is about and what it does
+For this project, the goal is to ask and answer three questions about the available bikeshare data from Washington, Chicago, and New York.
+
+Question highlights:
+1. What is the most common month in New York?
+2. What is the most common start station in Washington?
+3. What is the average travel time in different cities?
 
 ### Files used
-Include the files used
+- bikeshare.Rmd
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Thank you to Udacity: [GitHub project (Project 3) repository for PDSND](https://github.com/udacity/pdsnd_github)
