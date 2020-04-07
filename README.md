@@ -2,7 +2,7 @@
 April 7, 2020
 
 ### Project Title
-Explore Bike Share Data
+Explore Bike Share Data with R
 
 ### Description
 For this project, the goal is to ask and answer three questions about the available bikeshare data from Washington, Chicago, and New York.
