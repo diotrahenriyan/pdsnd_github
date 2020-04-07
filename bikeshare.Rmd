@@ -1,0 +1,91 @@
+---
+title: "bikeshare"
+author: "Diotra Henriyan"
+date: "4/7/2020"
+output: html_document
+---
+
+```{r}
+ny = read.csv('new_york_city.csv')
+wash = read.csv('washington.csv')
+chi = read.csv('chicago.csv')
+
+head(ny)
+head(wash)
+head(chi)
+```
+
+```{r}
+# 1 Popular times of travel
+# Q: What is the most common month in New York?
+#=========================================================
+
+## Importing libraries
+library(ggplot2)
+
+## Convert to date
+day <- as.Date(ny$Start.Time)
+
+## Tabulate from day to month
+month <- table(cut(day, 'month'))
+
+## Add to data frame
+commonMonth <- data.frame(month = format(as.Date(names(month)), '%Y-%m'),
+               ny_freq = as.vector(month))
+
+## Plotting graph
+pCommonMonth <- ggplot(commonMonth, aes(x = month, y = ny_freq, group = 1, color = ny_freq)) +
+                    geom_line() +
+                    geom_point() +
+                    labs(title = "The Most Common Month",
+                    subtitle = "In New York",
+                    x = "Month",
+                    y = "Freq",
+                    caption = "Bikeshare popular times of travel - the most common month in New York")
+```
+
+```{r}
+# 2 Popular stations and trip
+# Q: What is the most common start station in Washington?
+#=========================================================
+tabWash <- table(wash$Start.Station)
+
+# Add washington start station to data frame
+dfWash <- data.frame(tabWash)
+colnames(dfWash) <- c("Station", "Freq")
+dfWash <- dfWash[order(-dfWash[, 2]),]
+
+## Plotting common start station graph
+pWash <- ggplot(subset(dfWash, Freq > 800), aes(x = Station, y = Freq)) +
+            geom_bar(aes(y = Freq, fill = Freq), stat = "identity") +
+            theme(axis.text.x = element_text(angle = 45)) +
+            scale_x_discrete(labels = abbreviate) +
+            labs(title = "The Most Common Start Station",
+            subtitle = "In Washington",
+            x = "Station",
+            y = "Freq",
+            caption="Bikeshare popular stations - the most common start station in Washington")
+```
+
+```{r}
+# 3 Trip duration
+# Q: What is the average travel time in different cities?
+
+# Add data frame average trip duration for each city
+AvgChi <- mean(chi$Trip.Duration, na.rm = TRUE)
+AvgNy <- mean(ny$Trip.Duration, na.rm = TRUE)
+AvgWash <- mean(wash$Trip.Duration, na.rm = TRUE)
+
+dfAvg <- data.frame(city = c("Chicago", "New York", "Washington"),
+                    avg_trip = c(AvgChi, AvgNy, AvgWash))
+
+# Plotting average graph
+pAvg <- ggplot(dfAvg, aes(x = city, y = avg_trip, fill = city)) +
+                 geom_bar(stat = "identity") +
+                 labs(title = "Average Trip Duration",
+                 subtitle = "In Different Cities",
+                 x = "City",
+                 y = "Avg Trip Duration",
+                 caption="Bikeshare trip duration - average trip duration in different cities")
+```
+
